@@ -41,6 +41,9 @@ module.exports = Generator.extend({
   },
 
   boostrap: function () {
+    const mv = (from, to) => {
+      this.fs.move(this.destinationPath(from), this.destinationPath(to));
+    };
     const tpl = {
       git: {
         name: this.user.git.name(),
@@ -55,9 +58,12 @@ module.exports = Generator.extend({
     tpl.call = tpl.electron ? 'electron lib/index.js' : 'node lib/index.js'
 
     this.fs.copyTpl([
-			`${this.templatePath()}/**`,
-			'!**/cli.js'
-		], this.destinationPath(), tpl);
+      `${this.templatePath()}/**`,
+      '!**/cli.js'
+    ], this.destinationPath(), tpl);
+
+    mv('editorconfig', '.editorconfig');
+    mv('gitignore', '.gitignore');
   },
 
   install: function () {

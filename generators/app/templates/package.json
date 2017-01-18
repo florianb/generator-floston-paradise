@@ -19,9 +19,11 @@
     "test": "xo && nyc ava"
   },
   "devDependencies": {
+<% if (electron) { -%>
     "devtron": ">=1.4.0",
     "electron": ">=1.4.14",
     "electron-builder": ">=11.4.4",
+<% } -%>
     "ava": ">=0.17.0",
     "babel-cli": ">=6.18.0",
     "babel-preset-env": ">=1.1.8",
