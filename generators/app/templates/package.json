@@ -66,7 +66,7 @@
       "protected",
       "private"
     ]
-  },
+  }<% if (electron) { %>,
   "build": {
     "appId": "<%= name %>",
     "mac": {
@@ -74,4 +74,5 @@
     },
     "win": {}
   }
+<% } -%>
 }
